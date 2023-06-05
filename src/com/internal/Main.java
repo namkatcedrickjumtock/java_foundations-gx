@@ -1,6 +1,7 @@
 package com.internal;
 
 import java.util.Scanner;
+
 public class Main {
         /**
          * @param args
@@ -11,7 +12,7 @@ public class Main {
 
                 int prncAmnt = scanner.nextByte();
                 System.out.print("Annual Interest Rate: ");
-                
+
                 // divide by 100 and divide by 12
                 float interestRate = scanner.nextFloat();
                 float monthlyInterestRate = (interestRate / 100) / 12;
