@@ -1,7 +1,6 @@
-package com.java_basics;
+package com.internal;
 
 import java.util.Scanner;
-
 public class Main {
         /**
          * @param args
