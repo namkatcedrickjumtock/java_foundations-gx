@@ -1,5 +1,6 @@
 package com.internal;
 
+import java.text.NumberFormat;
 import java.util.Scanner;
 
 public class Main {
@@ -7,23 +8,29 @@ public class Main {
          * @param args
          */
         public static void main(String[] args) {
+                final byte MONTHS_IN_YEAR = 12;
+                final byte PERCENT = 100;
+
                 Scanner scanner = new Scanner(System.in);
+
                 System.out.print("Principle: ");
+                int principal = scanner.nextInt();
 
-                int prncAmnt = scanner.nextByte();
                 System.out.print("Annual Interest Rate: ");
-
-                // divide by 100 and divide by 12
-                float interestRate = scanner.nextFloat();
-                float monthlyInterestRate = (interestRate / 100) / 12;
-                monthlyInterestRate++;
-
+                float annualinterest = scanner.nextFloat();
+                float monthlyInterest = annualinterest / PERCENT / MONTHS_IN_YEAR;
+                // a statement is a piece of code that produces a result.
+                // r(1+r)^n
                 System.out.print("Period (Years): ");
-                int numberOfpyments = scanner.nextInt();
-                int pymentDuration = numberOfpyments * 12;
+                int years = scanner.nextByte();
+                int numberOfPayments = years * MONTHS_IN_YEAR;
 
-                float calcInterestRate = (float) (monthlyInterestRate
-                                * (Math.pow(monthlyInterestRate, pymentDuration)));
-                System.out.println("Mortgage: " + calcInterestRate);
+                double mortgage = principal * (monthlyInterest * Math.pow(1 + monthlyInterest, numberOfPayments)
+                                / (Math.pow(1 + monthlyInterest, numberOfPayments) - 1));
+
+                String formatedMortgage = NumberFormat.getCurrencyInstance().format(mortgage);
+
+                System.out.println("Mortgage: " + formatedMortgage);
+                scanner.close();
         }
 }
